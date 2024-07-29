@@ -5,7 +5,7 @@ const carsSlice = createSlice({
     name: 'cars',
     initialState:{
         searchTerm: '',
-        cars:[]
+        data:[] // list of cars
     },
     reducers: {
         changeSearchTerm: (state, action) => {
@@ -14,7 +14,7 @@ const carsSlice = createSlice({
         // assuming that our action contains payload which has 
         // name and cost of the car => action.payload = {name:"car1", cost:45}
         addCar: (state, action) => {
-            state.cars.push({
+            state.data.push({
                 id: nanoid(),
                 name:action.payload.name,
                 cost: action.payload.cost
@@ -24,7 +24,7 @@ const carsSlice = createSlice({
         // assuming that action comes with payload containing id of the 
         // car that needs to be removed
         removeCar: (state, action) => {
-            state.cars = state.cars.filter((car) => {
+            state.data = state.data.filter((car) => {
                 if(car.id !== action.payload){
                     return car;
                 }

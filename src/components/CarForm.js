@@ -1,27 +1,33 @@
 import React from "react";
-import { changeName, changeCost } from "../store";
+import { changeName, changeCost, addCar } from "../store";
 import { useSelector, useDispatch } from "react-redux";
 function CarForm() {
   const dispatch = useDispatch();
-  const formState = useSelector((state)=> state.form);
-  const {name, cost} = formState;
-  
+  const formState = useSelector((state) => state.form);
+  const { name, cost } = formState;
+
   const handleNameChange = (event) => {
     dispatch(changeName(event.target.value));
     // console.log(name);
-  }
+  };
+
   const handleCostChange = (event) => {
     // event.target.value is going to be a string , and we want cost as a number
     // so we have to convert it, and if there is not a numnber then we have simply put 0 in the OR condition
-    const carCost = parseInt(event.target.value) || 0;    
+    const carCost = parseInt(event.target.value) || 0;
     dispatch(changeCost(carCost));
     // console.log(cost);
-  }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(addCar({ name: name, cost: cost })); // or you say it like dispatch(addCar({name, car}));
+  };
 
   return (
     <div className="car-form panel">
       <h4 className="subtitle is-3">Add Car</h4>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="field-group">
           <div className="field">
             <label>Name</label>
@@ -34,15 +40,17 @@ function CarForm() {
           <div className="field">
             <label>Value</label>
             <input
-              value={cost||''}
+              value={cost || ""}
               className="input is-expanded"
               onChange={handleCostChange}
               type="number"
             />
           </div>
         </div>
+        <div className="field">
+          <button className="button is-link">Submit</button>
+        </div>
       </form>
-      <button>Submit</button>
     </div>
   );
 }
