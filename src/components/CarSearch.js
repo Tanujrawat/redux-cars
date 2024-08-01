@@ -16,7 +16,7 @@ function CarSearch() {
     <div className="list-header">
       <h3 className="title is-3">My Cars</h3>
       <div className="search field is-horizontal">
-        <label>searchCar</label>
+        <label className="label">Search</label>
         <input
           value={searchTerm}
           className="input"

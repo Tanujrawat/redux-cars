@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeCar } from "../store";
-import '.././styles.css';
 
 function CarList() {
   const dispatch = useDispatch();
@@ -43,7 +42,7 @@ function CarList() {
   });
 
   return (
-    <div>
+    <div className="car-list">
       {renderedCars}
       <hr />
     </div>

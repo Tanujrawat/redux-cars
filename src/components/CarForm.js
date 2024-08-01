@@ -3,8 +3,12 @@ import { changeName, changeCost, addCar } from "../store";
 import { useSelector, useDispatch } from "react-redux";
 function CarForm() {
   const dispatch = useDispatch();
-  const formState = useSelector((state) => state.form);
-  const { name, cost } = formState;
+  const { name, cost } = useSelector((state) => {
+    return {
+      name: state.form.name,
+      cost: state.form.cost,
+    };
+  });
 
   const handleNameChange = (event) => {
     dispatch(changeName(event.target.value));
@@ -30,15 +34,16 @@ function CarForm() {
       <form onSubmit={handleSubmit}>
         <div className="field-group">
           <div className="field">
-            <label>Name</label>
+            <label className="label">Name</label>
             <input
               value={name}
               className="input is-expanded"
               onChange={handleNameChange}
             />
           </div>
+
           <div className="field">
-            <label>Value</label>
+            <label className="label">Cost</label>
             <input
               value={cost || ""}
               className="input is-expanded"
