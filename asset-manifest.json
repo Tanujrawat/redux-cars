@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Tanujrawat/redux-cars/static/css/main.bb89526d.css",
+    "main.js": "/Tanujrawat/redux-cars/static/js/main.07aaf41c.js",
+    "index.html": "/Tanujrawat/redux-cars/index.html",
+    "main.bb89526d.css.map": "/Tanujrawat/redux-cars/static/css/main.bb89526d.css.map",
+    "main.07aaf41c.js.map": "/Tanujrawat/redux-cars/static/js/main.07aaf41c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb89526d.css",
+    "static/js/main.07aaf41c.js"
+  ]
+}
